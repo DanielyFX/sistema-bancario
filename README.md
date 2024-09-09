@@ -6,6 +6,6 @@ Atividade lab proposta pela DIO. O projeto tenta seguir algumas boas práticas d
 # Diretórios 📖
 /src/doamin/entities/conta.py -> mantem as classes, seus atributos essenciais e funções getters e setters.
 
-/sr/domain/repository/conta.py -> mantem as funções necessárias para saque, deposito, exibição de extrato e de menu.
+/src/domain/repository/conta.py -> mantem as funções necessárias para saque, deposito, exibição de extrato e de menu.
 
 /main.py -> Arquivo responsável por executar toda a lógica criada nos arquivos referentes a armazenamento de entidades e funções.
