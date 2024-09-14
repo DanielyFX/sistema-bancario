@@ -1,26 +1,28 @@
-def menu():
-    return """
-    [d] Depositar
-    [s] Sacar
-    [e] Extrato
-    [q] Sair\n
-    """
+from src.domain.entities.conta import Conta
 
-def sacar(saldo, valor):
-    if saldo >= valor:
-        return saldo-valor
-    else:
-        return "Operação inválida!\n"
 
-def depoisitar(saldo, valor):
-    if valor > 0:
-        return saldo+valor
-    else:
-        return "Depósitos não podem ser negativos!!\n"
+class OperacoesConta():
+    def sacar(self, saque_limite, op_limite, saldo, valor):
+        if saque_limite != 0 and op_limite != 0:
+            if saldo >= valor:
+                return saldo-valor
+            else:
+                return "Operação inválida!\n"
+        else:
+           return "limite de saques atingido! tente novamente outro dia!\n"
 
-def extrato(saldo, extrato, operacao):
-    return f"\
-    {extrato} {saldo} \n {operacao}\n \
+    def depoisitar(self, op_limite, saldo, valor):
+        if op_limite != 0:
+            if valor > 0:
+                return saldo+valor
+            else:
+                return "Depósitos não podem ser negativos!!\n"
+        else:
+            return "limite de operações atingido! tente novamente outro dia!\n"
+
+    def extrato(self, saldo, extrato, operacao, data):
+        return f"\
+        {extrato} {saldo} \n {operacao}\n {data}\n \
 ------------------------------------------\n"
 
     

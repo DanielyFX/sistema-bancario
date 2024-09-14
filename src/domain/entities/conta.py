@@ -1,21 +1,19 @@
-class Conta():
-    def __init__(self, numero, nome):
+from src.domain.entities.usuario import Usuario
+
+class Conta(Usuario):
+    def __init__(self, numero, usuario: Usuario):
+        super().__init__(usuario.nome, usuario.data_nascimento, usuario.cpf, usuario.logadouro)
         self._numero = numero
-        self._nome = nome
         self._limite = 1000
         self._saldo = 0
         self._LIMITE_SAQUES = 3
+        self._LIMITE_OPERACOES = 10
         self._extrato = "--------------EXTRATO------------\n"
 
     @property
     def numero(self):
         """getter para o número da conta"""
         return self._numero
-    
-    @property
-    def nome(self):
-        """getter para o nome do titular da conta"""
-        return self._nome
     
     @property
     def limite(self):
@@ -44,17 +42,30 @@ class Conta():
             self._saldo = valor
     
     @property
-    def saques(self):
+    def LIMITE_SAQUES(self):
         """getter para limite de saques"""
         return self._LIMITE_SAQUES
     
-    @saques.setter
-    def saques(self, valor):
+    @LIMITE_SAQUES.setter
+    def LIMITE_SAQUES(self, valor):
         """setter para limite de saques"""
         if valor < 0:
             raise ValueError("O número de saques não pode ser menor do que zero")
         else:
             self._LIMITE_SAQUES = valor
+    
+    @property
+    def LIMITE_OPERACOES(self):
+        """getter para limite de saques"""
+        return self._LIMITE_OPERACOES
+    
+    @LIMITE_OPERACOES.setter
+    def LIMITE_OPERACOES(self, valor):
+        """setter para limite de saques"""
+        if valor < 0:
+            raise ValueError("O número de saques não pode ser menor do que zero")
+        else:
+            self._LIMITE_OPERACOES = valor
         
     @property
     def extrato(self):
