@@ -5,6 +5,13 @@ from src.domain.entities.conta import Conta
 class OperacoesAdmin():
     def __init__(self):
         self.payload = {}
+    
+    def _validar_usuario(self, lista_usuarios, novo_usuario):
+        for usuario in lista_usuarios:
+            if usuario.cpf == novo_usuario.cpf:
+                return False
+        return True
+    
     def cadastrar_usuario(self, nome:str, data_nascimento: datetime, cpf: str, logadouro: dict) -> Usuario:
         self.payload.update({"nome":nome})
         self.payload.update({"data_nascimento":data_nascimento})
